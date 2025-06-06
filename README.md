@@ -9,15 +9,15 @@ Sugerimos o uso das seguintes ferramentas acessíveis: [FullCalendar](https://fu
 
 ## Informações do trabalho
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome:Thulio Hiroshi Fernandes Funayama
+- Matricula:891452
+- Proposta de projeto escolhida:Site de receitas
+- Breve descrição sobre seu projeto:site de receitas com a implementeção do grafico
 
 **Print da tela com a implementação**
 
 << Coloque aqui uma breve explicação da implementação feita nessa etapa>>
 
-<<  COLOQUE A IMAGEM TELA 1 AQUI >>
+<<  COLOQUE A IMAGEM TELA 1 AQUI >>![alt text](<public/img/Captura de tela 2025-06-06 183031.png>)
 
-<<  COLOQUE A IMAGEM TELA 2 AQUI >>
+<<  COLOQUE A IMAGEM TELA 2 AQUI >>![alt text](<public/img/Captura de tela 2025-06-06 183508.png>)
