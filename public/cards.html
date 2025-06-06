@@ -1,0 +1,69 @@
+
+<template id="card-template">
+    <div class="card">
+        <img src="" alt="" class="card-image">
+        <h3 class="card-title"></h3>
+        <p class="card-description"></p>
+        <a href="#" class="card-link">Ver Receita</a>
+    </div>
+</template>
+
+
+<template id="card-horizontal-template">
+    <div class="card card-horizontal">
+        <img src="" alt="" class="card-image">
+        <div class="card-content">
+            <h3 class="card-title"></h3>
+            <p class="card-description"></p>
+            <a href="#" class="card-link">Ver Receita</a>
+        </div>
+    </div>
+</template>
+
+
+<template id="card-featured-template">
+    <div class="card card-featured">
+        <img src="" alt="" class="card-image">
+        <h3 class="card-title"></h3>
+        <p class="card-description"></p>
+        <a href="#" class="card-link">Ver Receita</a>
+    </div>
+</template>
+
+
+<template id="card-minimal-template">
+    <div class="card card-minimal">
+        <img src="" alt="" class="card-image">
+        <h3 class="card-title"></h3>
+        <a href="#" class="card-link">Ver Receita</a>
+    </div>
+</template>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    
+    function createCard(templateId, data) {
+        const template = document.getElementById(templateId);
+        const clone = template.content.cloneNode(true);
+        
+        const card = clone.querySelector('.card');
+        const img = clone.querySelector('.card-image');
+        const title = clone.querySelector('.card-title');
+        const desc = clone.querySelector('.card-description');
+        const link = clone.querySelector('.card-link');
+        
+        if (img) img.src = data.image || '';
+        if (img) img.alt = data.title || '';
+        if (title) title.textContent = data.title || '';
+        if (desc) desc.textContent = data.description || '';
+        if (link) link.href = data.link || '#';
+        
+        return card;
+    }
+    
+    
+    window.createCard = createCard;
+});
+</script>

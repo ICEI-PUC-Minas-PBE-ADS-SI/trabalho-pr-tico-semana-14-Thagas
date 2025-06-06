@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Receitas Deliciosas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoYz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+                <img src="./img/logo receitas.png">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="receitas.html">Receitas</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="guiarestaurantes.html">Restaurantes</a></li>
+            </ul>
+        </nav>
+        <div class="caixa-pesquisa">
+            <input type="text" class="texto-pesquisa" placeholder="Pesquise uma receita...">
+            <button>Buscar</button>
+        </div>
+    </header>
+
+    <div class="banner">
+        <h1>Bem-vindo ao Mundo das Receitas!</h1>
+        <p>Descubra receitas incríveis para todas as ocasiões.</p>
+    </div>
+
+    <main class="conteudo">
+        <section class="descricao">
+            <h2>Sobre Nós</h2>
+            <p>No nosso site, você encontrará uma variedade de receitas testadas e aprovadas, perfeitas para qualquer ocasião. Seja você um chef experiente ou um iniciante na cozinha, temos algo especial para você!</p>
+        </section>
+        <section class="receitas-destaque">
+            <h2>Itens em Destaque</h2>
+            <div id="carouselDestaque" class="custom-carousel">
+                <button id="prevBtn" class="btn btn-primary">Anterior</button>
+                <div id="carousel-inner" class="carousel-inner" style="position: relative; overflow: hidden; height: 400px;">
+                </div>
+                <button id="nextBtn" class="btn btn-primary">Próximo</button>
+            </div>
+
+            <style>
+                .carousel-item {
+                    display: none;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    transition: opacity 0.5s ease-in-out;
+                }
+                .carousel-item.active {
+                    display: block;
+                    position: relative;
+                }
+                .carousel-caption {
+                    position: absolute;
+                    bottom: 20px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: rgba(0, 0, 0, 0.5);
+                    color: white;
+                    padding: 10px;
+                    border-radius: 5px;
+                    max-width: 100%;
+                    width: 80%;
+                    text-align: center;
+                }
+                #carouselDestaque {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 10px;
+                }
+                #prevBtn, #nextBtn {
+                    height: 40px;
+                    align-self: center;
+                }
+            </style>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const recipes = [
+                        {
+                            image: './img/pizza.png',
+                            title: 'Pizza de Calabresa',
+                            description: 'Uma deliciosa pizza com calabresa artesanal e cebolas caramelizadas.',
+                            link: 'receitas_pizza.html?recipe=pizza_calabresa',
+                            alt: 'Pizza calabresa'
+                        },
+                        {
+                            image: './img/coxinha_costelinha.png',
+                            title: 'Coxinha de Costelinha',
+                            description: 'Coxinhas crocantes recheadas com costelinha desfiada e temperos especiais.',
+                            link: 'receitas_coxinha.html?recipe=coxinha_costelinha',
+                            alt: 'Coxinha de costelinha'
+                        },
+                        {
+                            image: './img/lasanha.png',
+                            title: 'Lasanha',
+                            description: 'Lasanha caseira com molho especial e queijo derretido.',
+                            link: 'receitas_lasanha.html?recipe=lasanha',
+                            alt: 'Lasanha'
+                        }
+                    ];
+
+                    const carouselInner = document.getElementById('carousel-inner');
+                    let currentIndex = 0;
+                    let intervalId;
+
+                    function showItem(index) {
+                        const items = carouselInner.querySelectorAll('.carousel-item');
+                        items.forEach((item, i) => {
+                            item.classList.toggle('active', i === index);
+                        });
+                    }
+
+                    function createCarouselItem(recipe) {
+                        const divItem = document.createElement('div');
+                        divItem.classList.add('carousel-item');
+
+                        const link = document.createElement('a');
+                        link.href = recipe.link;
+
+                        const img = document.createElement('img');
+                        img.src = recipe.image;
+                        img.alt = recipe.alt;
+                        img.style.width = '100%';
+                        img.style.height = '400px';
+                        img.style.objectFit = 'cover';
+
+                        const caption = document.createElement('div');
+                        caption.classList.add('carousel-caption');
+
+                        const h5 = document.createElement('h5');
+                        h5.textContent = recipe.title;
+
+                        const p = document.createElement('p');
+                        p.textContent = recipe.description;
+
+                        caption.appendChild(h5);
+                        caption.appendChild(p);
+
+                        link.appendChild(img);
+                        link.appendChild(caption);
+
+                        divItem.appendChild(link);
+
+                        return divItem;
+                    }
+
+                    function showNext() {
+                        currentIndex = (currentIndex + 1) % recipes.length;
+                        showItem(currentIndex);
+                    }
+
+                    function showPrev() {
+                        currentIndex = (currentIndex - 1 + recipes.length) % recipes.length;
+                        showItem(currentIndex);
+                    }
+
+                    
+                    recipes.forEach(recipe => {
+                        const item = createCarouselItem(recipe);
+                        carouselInner.appendChild(item);
+                    });
+
+                    showItem(currentIndex);
+
+                    
+                    document.getElementById('nextBtn').addEventListener('click', () => {
+                        showNext();
+                    });
+
+                    document.getElementById('prevBtn').addEventListener('click', () => {
+                        showPrev();
+                    });
+                });
+            </script>
+        </section>
+
+        <section class="itens-cadastrados my-5 text-center">
+            <h2>Receitas</h2>
+            <div id="cards-container" class="d-flex flex-wrap gap-3 justify-content-center">
+            </div>
+
+            <template id="card-template">
+                <div class="card" style="width: 18rem;">
+                    <img src="" alt="" class="card-img-top card-image">
+                    <div class="card-body">
+                        <h5 class="card-title"></h5>
+                        <p class="card-text card-description"></p>
+                        <a href="#" class="btn btn-primary card-link">Ver Receita</a>
+                    </div>
+                </div>
+            </template>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const items = [
+                        {
+                            image: './img/pizza.png',
+                            title: 'Pizza de Calabresa',
+                            description: 'Uma deliciosa pizza com calabresa artesanal e cebolas caramelizadas.',
+                            link: 'receitas_pizza.html?recipe=pizza_calabresa'
+                        },
+                        {
+                            image: './img/coxinha_costelinha.png',
+                            title: 'Coxinha de Costelinha',
+                            description: 'Coxinhas crocantes recheadas com costelinha desfiada e temperos especiais.',
+                            link: 'receitas_coxinha.html?recipe=coxinha_costelinha'
+                        },
+                        {
+                            image: './img/lasanha.png',
+                            title: 'Lasanha',
+                            description: 'Lasanha caseira com molho especial e queijo derretido.',
+                            link: 'receitas_lasanha.html?recipe=lasanha'
+                        }
+                    ];
+
+                    function createCard(data) {
+                        const template = document.getElementById('card-template');
+                        const clone = template.content.cloneNode(true);
+
+                        const card = clone.querySelector('.card');
+                        const img = clone.querySelector('.card-image');
+                        const title = clone.querySelector('.card-title');
+                        const desc = clone.querySelector('.card-description');
+                        const link = clone.querySelector('.card-link');
+
+                        if (img) {
+                            img.src = data.image || '';
+                            img.alt = data.title || '';
+                        }
+                        if (title) title.textContent = data.title || '';
+                        if (desc) desc.textContent = data.description || '';
+                        if (link) link.href = data.link || '#';
+
+                        return card;
+                    }
+
+                    const container = document.getElementById('cards-container');
+                    items.forEach(item => {
+                        const card = createCard(item);
+                        container.appendChild(card);
+                    });
+                });
+            </script>
+        </section>
+
+        <section class="sobre-responsavel my-5 p-4 bg-light rounded text-center">
+            <h2>Sobre o Responsável</h2>
+            <p>Aluno: Thagas</p>
+            <p>Responsável pela criação deste site como parte do curso de Desenvolvimento de Interfaces Web.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer" style="background-color: #FF6F00; padding: 281px 0; margin-top: 50px; border-radius: 15px 15px 0 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                
+                
+                <div class="footer-section">
+                    <h3 style="color: #333; font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Contato</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px;">
+                            <i class="fas fa-envelope" style="margin-right: 10px;"></i>
+                            contato@receitasdeliciosas.com.br
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <i class="fas fa-phone" style="margin-right: 10px;"></i>
+                            (11) 1234-5678
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i>
+                            Rua das Receitas, 123 - São Paulo/SP
+                        </li>
+                    </ul>
+                </div>
+
+                
+                <div class="footer-section">
+                    <h3 style="color: #333; font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Redes Sociais</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px;">
+                            <a href="#" style="color: #333; text-decoration: none; display: flex; align-items: center;">
+                                <i class="fab fa-facebook" style="margin-right: 10px;"></i>
+                                Facebook
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 15px;">
+                            <a href="#" style="color: #333; text-decoration: none; display: flex; align-items: center;">
+                                <i class="fab fa-instagram" style="margin-right: 10px;"></i>
+                                Instagram
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" style="color: #333; text-decoration: none; display: flex; align-items: center;">
+                                <i class="fab fa-youtube" style="margin-right: 10px;"></i>
+                                YouTube
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                
+                <div class="footer-section">
+                    <h3 style="color: #333; font-size: 22px; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 10px;">Links Úteis</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 15px;">
+                            <a href="politica-privacidade.html" style="color: #333; text-decoration: none;">Política de Privacidade</a>
+                        </li>
+                        <li>
+                            <a href="termos-uso.html" style="color: #333; text-decoration: none;">Termos de Uso</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+            <div class="footer-bottom" style="text-align: center; padding-top: 40px; margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.1);">
+                <p style="margin: 0; color: #333; font-size: 16px; font-weight: 500;">
+                    &copy; 2025 Receitas Deliciosas. Todos os direitos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,18 +1,38 @@
 {
-  "usuarios": [
+  "cards": [
     {
-      "id": "187cb7e5-e097-4224-8bc7-b610c855e2b1",
-      "login": "admin",
-      "senha": "123",
-      "nome": "Administrador do Sistema",
-      "email": "admin@abc.com"
+      "template": "card-template",
+      "title": "Bolo de Chocolate",
+      "description": "Um delicioso bolo de chocolate com cobertura cremosa.",
+      "image": "imagens/bolo-chocolate.jpg",
+      "link": "receitas/bolo-chocolate.html",
+      "id": "3ac8"
     },
     {
-      "id": "ec37c83d-4b7f-458d-9e10-3fda7d37cd3e",
-      "login": "user",
-      "senha": "123",
-      "nome": "Usuario Comum",
-      "email": "user@abc.com"
+      "template": "card-horizontal-template",
+      "title": "Lasanha de Frango",
+      "description": "Receita fácil e saborosa de lasanha com frango desfiado.",
+      "image": "imagens/lasanha-frango.jpg",
+      "link": "receitas/lasanha-frango.html",
+      "id": "ffdc"
+    },
+    {
+      "template": "card-featured-template",
+      "title": "Feijoada Completa",
+      "description": "Feijoada tradicional brasileira com todos os acompanhamentos.",
+      "image": "imagens/feijoada.jpg",
+      "link": "receitas/feijoada.html",
+      "id": "3dbf"
+    },
+    {
+      "template": "card-minimal-template",
+      "title": "Vitamina de Banana",
+      "image": "imagens/vitamina-banana.jpg",
+      "link": "receitas/vitamina-banana.html",
+      "id": "22f6"
+    },
+    {
+      "id": "f076"
     }
   ]
 }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lasanha - Receitas Deliciosas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+                <img src="./img/logo receitas.png" alt="Logo do site de receitas">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="receitas.html">Receitas</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="guiarestaurantes.html">Restaurantes</a></li>
+            </ul>
+        </nav>
+        <div class="caixa-pesquisa">
+            <input type="text" class="texto-pesquisa" placeholder="Pesquise uma receita...">
+            <button>Buscar</button>
+        </div>
+    </header>
+
+    <div class="banner">
+        <h1 id="recipe-title">Lasanha</h1>
+        <p id="recipe-description">Lasanha caseira com molho especial e queijo derretido</p>
+    </div>
+
+    <main class="conteudo">
+        <div style="background-color: #fff8f0; padding: 30px 40px; border-radius: 15px; box-shadow: 0 8px 20px rgba(255, 102, 0, 0.3); margin: 40px auto; max-width: 900px;">
+            <section class="receita-detalhes">
+                <div class="receita-imagem" style="display:flex; justify-content:center; align-items:center; height:500px;">
+                    <img src="./img/lasanha.png" alt="Lasanha caseira com queijo derretido" style="width:50%; height:500px; object-fit:cover; margin:auto;">
+                </div>
+                
+                <div class="receita-info">
+                    <h2>Ingredientes</h2>
+                    <ul>
+                        <li>500g de massa para lasanha</li>
+                        <li>400g de molho de tomate</li>
+                        <li>300g de queijo mussarela ralado</li>
+                        <li>200g de presunto fatiado</li>
+                        <li>200g de queijo parmesão ralado</li>
+                        <li>1 cebola picada</li>
+                        <li>2 dentes de alho picados</li>
+                        <li>Sal e pimenta a gosto</li>
+                        <li>Azeite para refogar</li>
+                    </ul>
+
+                    <h2>Modo de Preparo</h2>
+                    <ol>
+                        <li>Pré-aqueça o forno a 180°C</li>
+                        <li>Refogue a cebola e o alho no azeite até dourar</li>
+                        <li>Adicione o molho de tomate, sal e pimenta, cozinhe por 10 minutos</li>
+                        <li>Em um refratário, monte camadas alternadas de massa, molho, presunto e mussarela</li>
+                        <li>Finalize com molho e queijo parmesão ralado por cima</li>
+                        <li>Leve ao forno por cerca de 40 minutos até gratinar</li>
+                        <li>Deixe descansar por 5 minutos antes de servir</li>
+                    </ol>
+
+                    <div class="receita-meta">
+                        <p><strong>Tempo de preparo:</strong> 1 hora</p>
+                        <p><strong>Rendimento:</strong> 6 porções</p>
+                        <p><strong>Dificuldade:</strong> Média</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        2025 Receitas Deliciosas. Todos os direitos reservados.
+    </footer>
+</body>
+</html>
