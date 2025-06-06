@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Relatório de Receitas</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial; text-align: center; padding: 20px; }
+    canvas { max-width: 600px; margin: auto; }
+  </style>
+</head>
+<body>
+  <h1>Relatório de Categorias de Receitas</h1>
+  <canvas id="graficoReceitas" width="600" height="300"></canvas>
+
+  <script>
+    // PRIMEIRO CONJUNTO DE DADOS (para print1)
+    const dadosReceitas = {
+      labels: ['Doces', 'Salgados', 'Massas', 'Bebidas'],
+      datasets: [{
+        label: 'Quantidade de Receitas',
+        data: [10, 7, 5, 3],
+        backgroundColor: ['#ff6384', '#36a2eb', '#ffcd56', '#4bc0c0']
+      }]
+    };
+
+    const config = {
+      type: 'bar',
+      data: dadosReceitas,
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    };
+
+    new Chart(document.getElementById('graficoReceitas'), config);
+  </script>
+</body>
+</html>
